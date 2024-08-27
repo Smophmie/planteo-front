@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Belleza";
+    color: #495566;
+}
+
+.header {
+    padding: 0 2%;
+    height: 70px;
+    background-color: #FBFDFF;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items: center;
+    box-shadow: 10px 5px 5px #FBFDFF;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+a {
+    text-decoration: none;
+}
+
+.searchBar {
+    width: 20%;
+    padding: 15px;
+    height: 35px;
+    border-radius: 30px;
+    border: none;
+    color: #D2D2D2;
+    font-family: "Poppins";
+}
