@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #FBFDFF;
+}
+
+.bg-green-gradient {
+    background: linear-gradient(285deg, rgba(206,214,157,1) 0%, rgba(144,158,62,1) 100%);
+}
+
+.hero {
+    justify-content: start;
+}
+
+h1 {
+    color: white;
+}
+
+.hero .searchbar {
+    width: 25%;
+    border-radius: 30px;
+    padding: 20px;
+    color: #D2D2D2;
+    font-family: "Poppins";
+    font-size: medium;
+}
