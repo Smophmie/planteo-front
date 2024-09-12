@@ -28,7 +28,7 @@ function App() {
     <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home isAuthenticated={isAuthenticated} />}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/all-plants" element={<Plants/>}/>
         <Route path="/profile" element={<Profile/>}/>
