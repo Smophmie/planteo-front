@@ -9,7 +9,7 @@
     color: #495566;
 }
 
-h1, header a {
+h1, header a, header button {
     font-family: "Belleza";
 }
 
@@ -22,14 +22,4 @@ header {
 
 .logo {
     height: 50px;
-}
-
-.searchbar {
-    width: 300px;
-    padding: 15px;
-    height: 35px;
-    border-radius: 30px;
-    border: none;
-    color: #D2D2D2;
-    font-family: "Poppins";
 }

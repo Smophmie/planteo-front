@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/header.css" ;
+import axios from 'axios';
 
 const navLinks = [
     { href: '/', name: "Accueil" },
@@ -15,6 +16,29 @@ const navLinksConnected = [
 ]
 
 function Header({ isAuthenticated, onLogout }) {
+
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
+        console.log('Déconnexion en cours...');
+        try {
+          const token = localStorage.getItem('token');
+          if (token) {
+            const config = {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            };
+            await axios.post('http://localhost:8000/api/logout', {}, config);
+            localStorage.removeItem('token');
+            onLogout(); 
+            navigate('/');
+          }
+        } catch (error) {
+          console.error('Erreur lors de la déconnexion', error);
+        }
+      };
+    
     return (
         <>
         <header>
@@ -45,13 +69,13 @@ function Header({ isAuthenticated, onLogout }) {
                         {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
 
                         {/* {isAuthenticated && isAdmin && <li><Link to="/all-users" className="">Tous les utilisateurs</Link></li>} */}
-                        {/* {isAuthenticated && (
+                        {isAuthenticated && (
                             <li>
                             <button onClick={handleLogout} className="">
                                 Me déconnecter
                             </button>
                             </li>
-                        )} */}
+                        )}
                         {!isAuthenticated && <li><Link to="/login" className="">Me connecter</Link></li>}
                         {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
                         </ul>
@@ -72,20 +96,15 @@ function Header({ isAuthenticated, onLogout }) {
                     </div>
                     <div className="navbar-end">
                     <ul className="menu menu-horizontal px-1">
-                        {/* {isAuthenticated && (
+                        {isAuthenticated && (
                         <li>
                             <button onClick={handleLogout} className="">
                             Me déconnecter
                             </button>
                         </li>
-                        )} */}
+                        )}
                         {!isAuthenticated && <li><Link to="/login" className="">Me connecter</Link></li>}
                         {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
-                        <input 
-                            type="search"
-                            placeholder="Rechercher un légume"
-                            className="searchbar shadow-md"
-                        ></input>
                     </ul>
                     </div>
                 </div>
