@@ -6,7 +6,6 @@ import axios from 'axios';
 const navLinks = [
     { href: '/', name: "Accueil" },
     { href: '/all-plants', name: "Tous les légumes" },
-    { href: '/login', name: "Connexion" },
 ]
 
 const navLinksConnected = [

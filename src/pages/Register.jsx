@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+import "../assets/css/login.css"
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ const Register = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log(formData);
         axios.post('http://localhost:8000/api/register', formData)
             .then(response => {
                 setMessage('Inscription réussie ! Vous pouvez maintenant vous connecter.');
@@ -36,7 +36,6 @@ const Register = () => {
                     password_confirmation: '',
                 });
                 setErrors({});
-                // Rediriger l'utilisateur vers la page de connexion ou autre après inscription
                 navigate('/login');
             })
             .catch(error => {
@@ -50,15 +49,11 @@ const Register = () => {
     };
 
     return (
-        <div className="container">
-            <div className="form">
-                <h1 className='text-xl'>S’enregistrer</h1>
+        <div className="w-1/3 m-auto my-10">
+            <div className="form space-y-3">
+                <h1 className='text-3xl'>S’enregistrer</h1>
                 {message && <p style={{ color: 'red' }}>{message}</p>}
-                <form onSubmit={handleSubmit}>
-                  <div class="label">
-                    <span class="label-text">Votre nom</span>
-                  </div>
-                  <input type="text" placeholder="Votre nom" class="input input-bordered w-full max-w-xs" />
+                <form onSubmit={handleSubmit} className='space-y-6'>
                     <div className="form-group">
                         <input 
                             type="text" 
@@ -66,20 +61,20 @@ const Register = () => {
                             placeholder="Nom" 
                             value={formData.name} 
                             onChange={handleChange} 
-                            className="input input-bordered w-full"
+                            className="input bg-transparent w-full"
                         />
-                        {errors.name && <p style={{ color: 'red' }}>{errors.name[0]}</p>}
+                        {/* {errors.name && <p style={{ color: 'red' }}>{errors.name[0]}</p>} */}
                     </div>
                     <div className="form-group">
                         <input 
                             type="email" 
                             name="email" 
-                            placeholder="Email" 
+                            placeholder="E-mail" 
                             value={formData.email} 
                             onChange={handleChange} 
-                            className="input input-bordered w-full"
+                            className="input bg-transparent w-full"
                         />
-                        {errors.email && <p style={{ color: 'red' }}>{errors.email[0]}</p>}
+                        {/* {errors.email && <p style={{ color: 'red' }}>{errors.email[0]}</p>} */}
                     </div>
                     <div className="form-group">
                         <input 
@@ -88,24 +83,24 @@ const Register = () => {
                             placeholder="Mot de passe" 
                             value={formData.password} 
                             onChange={handleChange} 
-                            className="input input-bordered w-full"
+                            className="input bg-transparent w-full"
                         />
-                        {errors.password && <p style={{ color: 'red' }}>{errors.password[0]}</p>}
+                        {/* {errors.password && <p style={{ color: 'red' }}>{errors.password[0]}</p>} */}
                     </div>
                     <div className="form-group">
                         <input 
                             type="password" 
                             name="password_confirmation" 
-                            placeholder="Confirmer le mot de passe" 
+                            placeholder="Confirmez votre mot de passe" 
                             value={formData.password_confirmation} 
                             onChange={handleChange} 
-                            className="input input-bordered w-full"
+                            className="input bg-transparent w-full"
                         />
                     </div>
-                    <button type="submit" className="btnForm mt-10 btn-register">S’enregistrer</button>
-                    <button className="btnForm mt-10 btn-login">
-                        <Link to='/login'>Vous avez déjà un compte ? Se connecter</Link>
-                    </button>
+                    <button type="submit" className="btn w-full uppercase">S’enregistrer</button>
+                    <div>
+                        <span>Vous avez déjà un compte ? </span><Link to='/login'>Se connecter</Link>
+                    </div>
                 </form>
             </div>
         </div>
