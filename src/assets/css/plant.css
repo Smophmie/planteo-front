@@ -1,0 +1,15 @@
+.plant-details h1 {
+    color: #36455A;
+}
+
+.plant-type {
+    width: fit-content;
+    padding: 0.25em 0.5em;
+    color: #fff;
+    background-color: #909E3E;
+    border-radius: 0.25rem;
+}
+
+.yellow {
+    color: #FFCD00;
+}

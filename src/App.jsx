@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Plants from "./pages/Plants";
 import Profile from "./pages/Profile";
 import Header from "./components/Header";
+import Plant from './pages/Plant';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -31,6 +32,7 @@ function App() {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/all-plants" element={<Plants/>}/>
+        <Route path="/plant/:id" element={<Plant/>}/>
         <Route path="/profile" element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
