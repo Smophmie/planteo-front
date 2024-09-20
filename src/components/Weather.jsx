@@ -35,8 +35,6 @@ function Weather() {
     if (!weather) {
         return <div>Chargement...</div>;
     }
-
-    console.log(weather);
     
 
     return (

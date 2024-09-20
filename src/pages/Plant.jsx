@@ -66,40 +66,40 @@ function Plant() {
                     </div>
                     {plant.sowing_period && 
                         (<div className="space-y-2">
-                            <h2 className="font-bold">Périodes de semis: </h2>
+                            <p className="font-bold">Périodes de semis: </p>
                             <p className="rounded-lg bg-slate-100 w-max p-1">{getMonthLabels(plant.sowing_period)}</p>
                         </div>
                     )}
                     {plant.planting_period && 
                         (<div className="space-y-2">
-                            <h2 className="font-bold">Périodes de plantation: </h2>
+                            <p className="font-bold">Périodes de plantation: </p>
                             <p className="rounded-lg bg-slate-100 w-max p-1">{getMonthLabels(plant.planting_period)}</p>
                         </div>
                     )}
                     <div className="space-y-2">
-                        <h2 className="font-bold">Périodes de récolte: </h2>
+                        <p className="font-bold">Périodes de récolte: </p>
                         <p className="rounded-lg bg-slate-100 w-max p-1">{getMonthLabels(plant.harvest_period)}</p>
                     </div>
                     <div>
-                        <h2 className="font-bold">Sol: </h2>
+                        <p className="font-bold">Sol: </p>
                         <p>{plant.soil}</p>
                     </div>
                     <div className="flex gap-28">
                         <div>
-                            <h2 className="font-bold">Arrosage: </h2>
+                            <p className="font-bold">Arrosage: </p>
                             <p>{plant.watering}</p>
                         </div>
                         <div>
-                            <h2 className="font-bold">Exposition: </h2>
+                            <p className="font-bold">Exposition: </p>
                             <p>{plant.exposure}</p>
                         </div>
                     </div>
                     <div>
-                        <h2 className="font-bold">Entretien: </h2>
+                        <p className="font-bold">Entretien: </p>
                         <p>{plant.maintenance}</p>
                     </div>
                     <div>
-                        <h2 className="font-bold">Description:</h2>
+                        <p className="font-bold">Description:</p>
                         <p>{plant.description}</p>
                     </div>
                 </div>
