@@ -49,7 +49,7 @@ const Register = () => {
     };
 
     return (
-        <div className="w-1/3 m-auto my-10">
+        <div className="lg:w-1/3 sm:w-3/4 md:w-3/4 m-auto my-10">
             <div className="form space-y-3">
                 <h1 className='text-3xl'>S’enregistrer</h1>
                 {message && <p style={{ color: 'red' }}>{message}</p>}

@@ -35,7 +35,7 @@ function PlantsOfTheMoment() {
             <h2 className='text-3xl'>En ce moment</h2>
             <div>
                 <h3 className="font-bold">C'est la période des semis</h3>
-                <div className="flex flex-wrap m-4 justify-center">
+                <div className="flex flex-wrap m-3 justify-center">
                     {sowingPlants && sowingPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
@@ -47,7 +47,7 @@ function PlantsOfTheMoment() {
             </div>
             <div>
                 <h3 className="font-bold">C'est la période des plantations</h3>
-                <div className="flex flex-wrap m-4 justify-center">
+                <div className="flex flex-wrap m-3 justify-center">
                     {plantingPlants && plantingPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
@@ -59,7 +59,7 @@ function PlantsOfTheMoment() {
             </div>
             <div>
                 <h3 className="font-bold">C'est la période des récoltes</h3>
-                <div className="flex flex-wrap m-4 justify-center">
+                <div className="flex flex-wrap m-3 justify-center">
                     {harvestPlants && harvestPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
                             <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />

@@ -93,18 +93,18 @@ function Header({ isAuthenticated, onLogout }) {
                         {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
                     </ul>
                     </div>
-                    <div className="navbar-end">
-                    <ul className="menu menu-horizontal px-1">
-                        {isAuthenticated && (
-                        <li>
-                            <button onClick={handleLogout} className="">
-                            Me déconnecter
-                            </button>
-                        </li>
-                        )}
-                        {!isAuthenticated && <li><Link to="/login" className="">Me connecter</Link></li>}
-                        {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
-                    </ul>
+                    <div className="navbar-end hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                            {isAuthenticated && (
+                            <li>
+                                <button onClick={handleLogout} className="">
+                                Me déconnecter
+                                </button>
+                            </li>
+                            )}
+                            {!isAuthenticated && <li><Link to="/login" className="">Me connecter</Link></li>}
+                            {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
+                        </ul>
                     </div>
                 </div>
             </header>
