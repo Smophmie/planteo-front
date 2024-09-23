@@ -1,7 +1,9 @@
+import "../assets/css/herosection.css";
+
 function HeroSection ({title}) {
     return <div className="hero bg-green-gradient h-52 relative">
         <div className="text-left">
-            <div className="max-w-md sm:pl-20 pl-6">
+            <div className="max-w-lg sm:pl-20 pl-6">
                 <h1 className="text-4xl">{title}</h1>
             </div>
         </div>

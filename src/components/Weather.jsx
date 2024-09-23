@@ -3,21 +3,37 @@ import axios from 'axios';
 import '../assets/css/weather.css';
 import weatherDescriptions from '../assets/weatherDescriptions.json'
 
-function Weather() {
+function Weather({isAuthenticated}) {
     const [weather, setWeather] = useState(null);
+    const [city, setCity] = useState('');
 
     const getCityInformations = async () => {
         try {
-            const cityInfos = await axios.get('https://api.meteo-concept.com/api/location/cities?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&search=dompierre-sur-besbre');
+            const token = localStorage.getItem('token');
+            const user = await axios.get('http://127.0.0.1:8000/api/connectedUser', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });            const userCity = user.data.city;
+            setCity(userCity);
+
+            const cityInfos = await axios.get(`https://api.meteo-concept.com/api/location/cities?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&search=${userCity}`);
+
+            const insee = cityInfos.data.cities[0].insee;
+            
+            getWeather(insee)
+            .then(forecast => {
+                setWeather(forecast);
+            });
         } catch (error) {
             console.error('Erreur lors de la recherche de la ville', error);
         }
     }
 
-    const getWeather = async () => {
+    const getWeather = async (insee) => {
         console.log('Recherche des données météo en cours...');
         try {
-            const response = await axios.get('https://api.meteo-concept.com/api/forecast/daily/0?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&insee=63040');
+            const response = await axios.get(`https://api.meteo-concept.com/api/forecast/daily/0?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&insee=${insee}`);
             const forecast = response.data.forecast;
             return forecast;         
         } catch (error) {
@@ -27,9 +43,9 @@ function Weather() {
 
     useEffect(() => {
         getCityInformations();
-        getWeather().then(forecast => {
-            setWeather(forecast);
-        });
+        // getWeather().then(forecast => {
+        //     setWeather(forecast);
+        // });
     }, []);
 
     if (!weather) {

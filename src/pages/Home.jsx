@@ -8,7 +8,7 @@ function Home({isAuthenticated}) {
   return (
     <>
       <HeroSection title="Bonjour, vous pouvez commencer à jardiner."/>
-      {isAuthenticated && <Weather/>}
+      {isAuthenticated && <Weather isAuthenticated={isAuthenticated}/>}
       <PlantsOfTheMoment />
     </>
   );

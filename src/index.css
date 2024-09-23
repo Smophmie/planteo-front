@@ -23,11 +23,3 @@ h1 {
 h1, h2 {
     font-family: "Belleza";
 }
-
-.hero .searchbar {
-    /* width: 25%; */
-    border-radius: 30px;
-    padding: 20px;
-    color: #D2D2D2;
-    font-size: medium;
-}

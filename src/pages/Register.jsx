@@ -9,6 +9,7 @@ const Register = () => {
         email: '',
         password: '',
         password_confirmation: '',
+        city:'',
     });
   
     const [errors, setErrors] = useState({});
@@ -34,6 +35,7 @@ const Register = () => {
                     email: '',
                     password: '',
                     password_confirmation: '',
+                    city: '',
                 });
                 setErrors({});
                 navigate('/login');
@@ -58,7 +60,7 @@ const Register = () => {
                         <input 
                             type="text" 
                             name="name" 
-                            placeholder="Nom" 
+                            placeholder="Votre nom" 
                             value={formData.name} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
@@ -67,9 +69,20 @@ const Register = () => {
                     </div>
                     <div className="form-group">
                         <input 
+                            type="text" 
+                            name="city" 
+                            placeholder="Votre ville" 
+                            value={formData.city} 
+                            onChange={handleChange} 
+                            className="input bg-transparent w-full"
+                        />
+                        {/* {errors.name && <p style={{ color: 'red' }}>{errors.city[0]}</p>} */}
+                    </div>
+                    <div className="form-group">
+                        <input 
                             type="email" 
                             name="email" 
-                            placeholder="E-mail" 
+                            placeholder="Votre e-mail" 
                             value={formData.email} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
@@ -80,7 +93,7 @@ const Register = () => {
                         <input 
                             type="password" 
                             name="password" 
-                            placeholder="Mot de passe" 
+                            placeholder="Votre mot de passe" 
                             value={formData.password} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"

@@ -18,10 +18,9 @@ function PlantsList() {
 
     return (
       <>
-        <HeroSection title="Tous les légumes"/>
+        <HeroSection title="Toutes les plantes potagères"/>
 
-        <div className="m-12">
-          <h1>List of Plants</h1>
+        <div className="m-16 plants-list">
           <ul className="space-y-2">
             {plants.map((plant) => (
               <li key={plant.id}>

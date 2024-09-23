@@ -46,7 +46,7 @@ function Plant() {
     }
 
     return (
-        <div>
+        <div className="plant">
             {plant && (
                 <>
                 {plant.image && (
