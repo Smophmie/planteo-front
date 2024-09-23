@@ -1,10 +1,16 @@
-import {BrowserRouter, Route, Routes} from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import HeroSection from "../components/HeroSection";
+import MyProfile from "../components/MyProfile";
 
-function Profile() {
+function Profile({ isAuthenticated }) {
+
   return (
     <>
+      <HeroSection title = "Mon espace"/>
+      <MyProfile/>
     </>
   );
 }
 
-export default Profile
+export default Profile;

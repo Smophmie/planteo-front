@@ -23,3 +23,7 @@ h1 {
 h1, h2 {
     font-family: "Belleza";
 }
+
+.alert-success {
+    background-color: rgba(144,158,62,1) ;
+}

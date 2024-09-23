@@ -5,12 +5,12 @@ import axios from 'axios';
 
 const navLinks = [
     { href: '/', name: "Accueil" },
-    { href: '/all-plants', name: "Tous les légumes" },
+    { href: '/all-plants', name: "Toutes les plantes" },
 ]
 
 const navLinksConnected = [
     { href: '/', name: "Accueil" },
-    { href: '/all-plants', name: "Tous les légumes" },
+    { href: '/all-plants', name: "Toutes les plantes" },
     { href: '/profile', name: "Mon espace" },
 ]
 

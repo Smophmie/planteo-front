@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../assets/css/weather.css';
 import weatherDescriptions from '../assets/weatherDescriptions.json'
 
-function Weather({isAuthenticated}) {
+function Weather() {
     const [weather, setWeather] = useState(null);
     const [city, setCity] = useState('');
 
@@ -43,13 +43,10 @@ function Weather({isAuthenticated}) {
 
     useEffect(() => {
         getCityInformations();
-        // getWeather().then(forecast => {
-        //     setWeather(forecast);
-        // });
     }, []);
 
     if (!weather) {
-        return <div>Chargement...</div>;
+        return <div>Chargement des données météo...</div>;
     }
     
 

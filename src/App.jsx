@@ -34,7 +34,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/all-plants" element={<Plants/>}/>
         <Route path="/plant/:id" element={<Plant/>}/>
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated}/>}/>
       </Routes>
     <Footer isAuthenticated={isAuthenticated} onLogout={handleLogout}/>
     </BrowserRouter>
