@@ -6,11 +6,10 @@
     width: 450px;
     border-radius: 30px;
     padding: 20px;
-    color: #D2D2D2;
     font-family: "Poppins";
     font-size: medium;
 }
 
-i {
+.hero i {
     color: white;
 }

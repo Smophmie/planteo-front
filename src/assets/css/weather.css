@@ -5,3 +5,7 @@
 .weather-block {
     background-color: rgba(255, 204, 0, 0.7);
 }
+
+.weather-block p {
+    color : #36455A;
+}

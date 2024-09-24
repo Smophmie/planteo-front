@@ -5,20 +5,36 @@ import { Link } from "react-router-dom";
 
 
 function PlantsList() {
-    const [plants, setPlants] = useState([]);
+  const [plants, setPlants] = useState([]);
+  const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/plants", {
-          type: "GET",
-        }).then((res) => res.json())
-        .then((data) => {
-            setPlants(data);
-          })
-      }, [])
+  useEffect(() => {
+    fetchPlants();
+  }, []);
+
+  const fetchPlants = (search = "") => {
+    const url = search 
+        ? `http://127.0.0.1:8000/api/plantsbyname?search=${search}` 
+        : "http://127.0.0.1:8000/api/plants";
+
+    fetch(url, { type: "GET" })
+        .then((res) => res.json())
+        .then((data) => setPlants(data));
+  };
+
+  const handleSearchChange = (e) => {
+      const newSearch = e.target.value;
+      setSearch(newSearch);
+      fetchPlants(newSearch);
+  };
 
     return (
       <>
-        <HeroSection title="Toutes les plantes potagères" showSearchbar/>
+        <HeroSection 
+          title="Toutes les plantes potagères" 
+          showSearchbar
+          search={search} 
+          onSearchChange={handleSearchChange} />
 
         <div className="m-16 plants-list">
           <ul className="space-y-2">

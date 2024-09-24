@@ -33,7 +33,7 @@ function App() {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register/>}/>
         <Route path="/all-plants" element={<Plants/>}/>
-        <Route path="/plant/:id" element={<Plant/>}/>
+        <Route path="/plant/:id" element={<Plant isAuthenticated={isAuthenticated}/>}/>
         <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated}/>}/>
       </Routes>
     <Footer isAuthenticated={isAuthenticated} onLogout={handleLogout}/>

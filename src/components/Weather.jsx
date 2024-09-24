@@ -44,14 +44,11 @@ function Weather() {
     useEffect(() => {
         getCityInformations();
     }, []);
-
-    if (!weather) {
-        return <div>Chargement des données météo...</div>;
-    }
     
 
     return (
-        <div className='sm:m-20 my-14 mx-4 weather'>
+        <>
+        {weather && <div className='sm:m-20 my-14 mx-4 weather'>
             <h2 className='text-3xl'>Météo du jour</h2>
             <div className='weather-block sm:m-16 m-6 sm:p-10 p-4 space-y-2 w-auto rounded-lg'>
                 {/* Correspondances entre le nombre entier de weather.weather et la description météo en toutes lettres */}
@@ -62,7 +59,8 @@ function Weather() {
                 <p className='text-white bold'>Vitesse du vent : {weather.wind10m}km/h</p>
 
             </div>
-        </div>
+        </div>}
+        </>
     );
 }
 

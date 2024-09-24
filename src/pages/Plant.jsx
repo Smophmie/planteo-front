@@ -4,17 +4,29 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/plant.css"
 
-function Plant() {
+function Plant({isAuthenticated}) {
     const { id } = useParams();
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const token = localStorage.getItem('token');
 
     useEffect(() => {
         const fetchPlant = async () => {
             try {
                 const response = await axios.get(`http://localhost:8000/api/plants/${id}`);
                 setPlant(response.data);
+
+                if(isAuthenticated){
+                    const favoriteResponse = await axios.get(`http://localhost:8000/api/favorite/${id}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    setIsFavorite(favoriteResponse.data.isFavorite);
+                }
                 setLoading(false);
             } catch (err) {
                 setError('Erreur lors du chargement des données de la plante.');
@@ -24,6 +36,29 @@ function Plant() {
 
         fetchPlant();
     }, [id]);
+
+    const handleFavoriteToggle = async () => {
+        try {
+            if (isFavorite) {
+                await axios.delete(`http://localhost:8000/api/favorites`, { 
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                    data: { plant_id: id }
+                });
+                setIsFavorite(false);
+            } else {
+                await axios.post(`http://localhost:8000/api/favorites`, { plant_id: id }, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setIsFavorite(true);
+            }
+        } catch (err) {
+            setError('Erreur lors de la mise à jour des favoris.');
+        }
+    };
 
     const getMonthLabels = (months) => {
         const monthLabels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
@@ -58,7 +93,15 @@ function Plant() {
                 )}
                 
                 <div className="plant-details m-12 space-y-4">
-                    <h1 className="text-3xl">{plant.name}</h1>
+                    <div className="flex flex-row items-center gap-3">
+                        <h1 className="text-3xl">{plant.name}</h1>
+                        {isAuthenticated && <div 
+                            className="circle text-center flex items-center justify-center cursor-pointer"
+                            onClick={handleFavoriteToggle}
+                        >
+                            <i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
+                        </div>}
+                    </div>
                     <div className="space-x-4">
                         {plant.type.split(', ').map((type, index) => (
                             <span key={index} className="plant-type uppercase text-xs">{type}</span>

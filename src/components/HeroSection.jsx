@@ -1,6 +1,6 @@
 import "../assets/css/herosection.css";
 
-function HeroSection ({title, secondTitle, showSearchbar}) {
+function HeroSection ({title, secondTitle, showSearchbar, search, onSearchChange }) {
     return <>
     <div className="hero bg-green-gradient h-52 relative">
         <div className="text-left">
@@ -12,8 +12,10 @@ function HeroSection ({title, secondTitle, showSearchbar}) {
         {showSearchbar && <div className="absolute w-full flex justify-center" style={{ top: 'calc(100% - 20px)' }}>
             <input 
             type="search"
-            placeholder="Rechercher un légume"
+            placeholder="Rechercher une plante potagère"
             className="searchbar shadow-md"
+            value={search}
+            onChange={onSearchChange}
             />
         </div>}
     </div>
