@@ -18,7 +18,7 @@ function PlantsList() {
 
     return (
       <>
-        <HeroSection title="Toutes les plantes potagères"/>
+        <HeroSection title="Toutes les plantes potagères" showSearchbar/>
 
         <div className="m-16 plants-list">
           <ul className="space-y-2">

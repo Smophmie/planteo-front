@@ -1,3 +1,7 @@
+.hero h2 {
+    color: white;
+}
+
 .hero .searchbar {
     width: 450px;
     border-radius: 30px;
@@ -5,4 +9,8 @@
     color: #D2D2D2;
     font-family: "Poppins";
     font-size: medium;
+}
+
+i {
+    color: white;
 }

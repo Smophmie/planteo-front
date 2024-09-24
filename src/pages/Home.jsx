@@ -7,7 +7,7 @@ import PlantsOfTheMoment from "../components/PlantsOfTheMoment";
 function Home({isAuthenticated}) {
   return (
     <>
-      <HeroSection title="Bonjour, vous pouvez commencer à jardiner."/>
+      <HeroSection title="Bonjour, vous pouvez commencer à jardiner." showSearchbar/>
       {isAuthenticated && <Weather/>}
       <PlantsOfTheMoment />
     </>

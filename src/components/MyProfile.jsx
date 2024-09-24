@@ -56,7 +56,7 @@ function MyProfile () {
   if (loading) return <div>Chargement...</div>;
   if (error) return <div>Erreur au chargement de vos données utilisateur.</div>;
 
-    return <div className="mx-8 my-12">
+    return <div className="m-16">
         <div className="form space-y-3">
             <h2 className='text-3xl'>Mon profil</h2>
             {successMessage && <div className="alert alert-success">{successMessage}</div>}
