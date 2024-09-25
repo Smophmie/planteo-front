@@ -14,7 +14,7 @@ const navLinksConnected = [
     { href: '/profile', name: "Mon espace" },
 ]
 
-function Header({ isAuthenticated, onLogout }) {
+function Header({ isAuthenticated, isAdmin, onLogout }) {
 
     const navigate = useNavigate();
 
@@ -66,6 +66,9 @@ function Header({ isAuthenticated, onLogout }) {
                         >
                         {!isAuthenticated && navLinks.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
                         {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
+                        {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
+
+
 
                         {/* {isAuthenticated && isAdmin && <li><Link to="/all-users" className="">Tous les utilisateurs</Link></li>} */}
                         {isAuthenticated && (
@@ -91,6 +94,7 @@ function Header({ isAuthenticated, onLogout }) {
                     <ul className="menu menu-horizontal px-1">
                         {!isAuthenticated && navLinks.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
                         {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
+                        {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
                     </ul>
                     </div>
                     <div className="navbar-end hidden lg:flex">
@@ -108,26 +112,6 @@ function Header({ isAuthenticated, onLogout }) {
                     </div>
                 </div>
             </header>
-        {/* <div className="header">
-            <a href="/">
-                <img 
-                    src="img/logo-removebg-preview.png"
-                    alt="Logo Planteo"
-                    className="logo"
-                ></img>
-            </a>
-            <nav>
-                {navLinks.map( navLink => <a href={navLink.href} key = {navLink.name}>{navLink.name}</a>)}
-
-                {navLinksConnected.map( navLink => <a href={navLink.href} key = {navLink.name}>{navLink.name}</a>)}
-
-            </nav>
-            <input 
-                type="search"
-                placeholder="Rechercher un légume"
-                className="searchBar shadow-md"
-            ></input>
-        </div> */}
         </>
     )
   }
