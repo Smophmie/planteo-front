@@ -31,7 +31,7 @@ function UsersAdministration(){
           setUsers(users.filter(user => user.id !== userId));
         })
         .catch(error => {
-          console.error("There was an error deleting the user!", error);
+          console.error("Erreur lors de la suppression de l'utilisateur.", error);
         });
       };
 
@@ -49,15 +49,14 @@ function UsersAdministration(){
         })
       };
 
-      return <div className="container mx-auto mt-10">
-      <h2 className="text-2xl font-bold mb-5">Tous les utilisateurs</h2>
+      return <div className="container m-16">
+      <h2 className="text-3xl mb-5">Tous les utilisateurs</h2>
       <div className="overflow-x-auto">
-      <table className="min-w-full bg-white">
+      <table className="min-w-full bg-transparent">
           <thead>
             <tr>
               <th className="py-2 px-4 border-b">Nom</th>
               <th className="py-2 px-4 border-b">E-mail</th>
-              <th className="py-2 px-4 border-b">Ville</th>
               <th className="py-2 px-4 border-b">Administrateur</th>
               <th className="py-2 px-4 border-b">Suppression</th>
             </tr>
@@ -67,7 +66,6 @@ function UsersAdministration(){
               <tr key={user.id} className="text-center">
                 <td className="py-2 px-4 border-b">{user.name}</td>
                 <td className="py-2 px-4 border-b">{user.email}</td>
-                <td className="py-2 px-4 border-b">{user.city}</td>
                 <td className="py-2 px-4 border-b">
                     <label className="inline-flex items-center cursor-pointer">
                         <input

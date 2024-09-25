@@ -5,9 +5,8 @@ import PlantsAdministration from "../components/PlantsAdministration";
 function Dashboard ({isAdmin}){
     return <>
         {isAdmin && <HeroSection title="Tableau de bord"/>}
-        {isAdmin && <PlantsAdministration/>}
         {isAdmin && <UsersAdministration/>}
-
+        {isAdmin && <PlantsAdministration/>}
     </>
 }
 
