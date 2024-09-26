@@ -39,6 +39,7 @@ function PlantsAdministration(){
 
       return <div className="container m-16">
       <h2 className="text-3xl mb-5">Toutes les plantes</h2>
+      <button className='btn uppercase green-button my-6'><Link to="/create-plant">Créer une plante</Link></button>
       {plants && <ul className="space-y-3">
             {plants.map((plant) => (
               <li key={plant.id} className="space-x-3 flex py-2 px-4 border-b w-min">

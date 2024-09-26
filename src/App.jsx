@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import Plant from './pages/Plant';
 import Legals from './pages/Legals';
 import Dashboard from './pages/Dashboard';
-import EditPlantForm from './pages/EditPlantForm';
+import PlantForm from './pages/PlantForm';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -58,7 +58,9 @@ function App() {
         {isAuthenticated && <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated}/>}/>}
         <Route path="/legals" element={<Legals/>}/>
         {isAdmin && <Route path="/dashboard" element={<Dashboard isAdmin={isAdmin}/>}/>}
-        {isAdmin && <Route path="/edit-plant/:id" element={<EditPlantForm/>}/>}
+        {isAdmin && <Route path="/edit-plant/:id" element={<PlantForm/>}/>}
+        {isAdmin && <Route path="/create-plant" element={<PlantForm/>}/>}
+
       </Routes>
     <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} onLogout={handleLogout}/>
     </BrowserRouter>

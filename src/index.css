@@ -27,3 +27,10 @@ h1, h2 {
 .alert-success {
     background-color: rgba(144,158,62,1) ;
 }
+
+.green-button {
+    background-color: #909E3E;
+    color: white;
+    font-weight: normal;
+    border-radius: 0;
+}

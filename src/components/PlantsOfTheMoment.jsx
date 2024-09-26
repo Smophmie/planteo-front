@@ -38,7 +38,7 @@ function PlantsOfTheMoment() {
                 <div className="flex flex-wrap m-3 justify-center">
                     {sowingPlants && sowingPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
+                            <img src={`http://localhost:8000/storage/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
                             <p className='text-center p-6'>{plant.name}</p>
                         </Link>
                     ))}
@@ -50,7 +50,7 @@ function PlantsOfTheMoment() {
                 <div className="flex flex-wrap m-3 justify-center">
                     {plantingPlants && plantingPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
+                            <img src={`http://localhost:8000/storage/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
                             <p className='text-center p-6'>{plant.name}</p>
                         </Link>
                     ))}
@@ -62,7 +62,7 @@ function PlantsOfTheMoment() {
                 <div className="flex flex-wrap m-3 justify-center">
                     {harvestPlants && harvestPlants.map(plant => (
                         <Link to={`/plant/${plant.id}`} key={plant.id} className="w-full sm:w-1/3 md:w-1/4 lg:w-1/5 m-3 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <img src={`http://localhost:8000/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
+                            <img src={`http://localhost:8000/storage/${plant.image}`} alt={plant.name} className="w-full h-56 object-cover" />
                             <p className='text-center p-6'>{plant.name}</p>
                         </Link>
                     ))}
