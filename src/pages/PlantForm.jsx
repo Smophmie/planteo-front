@@ -1,83 +1,134 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
 import HeroSection from "../components/HeroSection";
 
 function PlantForm (){
-    const months = [
-        { name: 'Janvier', value: '01' },
-        { name: 'Février', value: '02' },
-        { name: 'Mars', value: '03' },
-        { name: 'Avril', value: '04' },
-        { name: 'Mai', value: '05' },
-        { name: 'Juin', value: '06' },
-        { name: 'Juillet', value: '07' },
-        { name: 'Août', value: '08' },
-        { name: 'Septembre', value: '09' },
-        { name: 'Octobre', value: '10' },
-        { name: 'Novembre', value: '11' },
-        { name: 'Décembre', value: '12' }
-    ];
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const isEditing = Boolean(id);  
 
-    const [formData, setFormData] = useState({
-        name: '',
-        image: null,
-        type: '',
-        description: '',
-        sowing_period: '',
-        planting_period: '',
-        harvest_period: '',
-        soil: '',
-        watering: '',
-        exposure: '',
-        maintenance: ''
-      });
+  const months = [
+    { name: 'Janvier', value: '01' },
+    { name: 'Février', value: '02' },
+    { name: 'Mars', value: '03' },
+    { name: 'Avril', value: '04' },
+    { name: 'Mai', value: '05' },
+    { name: 'Juin', value: '06' },
+    { name: 'Juillet', value: '07' },
+    { name: 'Août', value: '08' },
+    { name: 'Septembre', value: '09' },
+    { name: 'Octobre', value: '10' },
+    { name: 'Novembre', value: '11' },
+    { name: 'Décembre', value: '12' }
+  ];
+
+  const [formData, setFormData] = useState({
+    name: '',
+    image: null,
+    type: '',
+    description: '',
+    sowing_period: '',
+    planting_period: '',
+    harvest_period: '',
+    soil: '',
+    watering: '',
+    exposure: '',
+    maintenance: ''
+  });
     
-      const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
-        const { name, value, type, files } = e.target;
+  useEffect(() => {
+    if (isEditing) {
+      const token = localStorage.getItem('token');
+      axios.get(`http://localhost:8000/api/plants/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(response => {
+        const plant = response.data;
         setFormData({
-        ...formData,
-        [name]: type === 'file' ? files[0] : value
+          name: plant.name || '',
+          image: null,
+          type: plant.type || '',
+          description: plant.description || '',
+          sowing_period: plant.sowing_period || '',
+          planting_period: plant.planting_period || '',
+          harvest_period: plant.harvest_period || '',
+          soil: plant.soil || '',
+          watering: plant.watering || '',
+          exposure: plant.exposure || '',
+          maintenance: plant.maintenance || ''
         });
-    };
+      })
+      .catch(error => {
+        console.error('Error fetching plant data:', error);        
+      });
+    }
+  }, [id, isEditing]);
 
-    const handleCheckboxChange = (e, period) => {
-        const { value, checked } = e.target;
-        const updatedPeriod = checked
-          ? [...formData[period], value]
-          : formData[period].filter(v => v !== value);
-        setFormData({ ...formData, [period]: updatedPeriod });
-      };
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    setFormData({
+    ...formData,
+    [name]: type === 'file' ? files[0] : value
+    });
+  };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleCheckboxChange = (e, period) => {
+    const { value, checked } = e.target;
+    let updatedString;
+  
+    if (checked) {
+      updatedString = formData[period] ? `${formData[period]}, ${value}` : value;
+    } else {
+      const valuesArray = formData[period].split(', ').filter(v => v !== value);
+      console.log(valuesArray);
+      updatedString = valuesArray.join(', ');
+    }
+  
+    setFormData({ ...formData, [period]: updatedString });
+  };
 
-        const formPayload = new FormData();
-        Object.keys(formData).forEach(key => {
-        formPayload.append(key, formData[key]);
-        });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        try {
-        const token = localStorage.getItem('token');
-        await axios.post('http://localhost:8000/api/plants', formPayload, {
-            headers: {
+    try {
+      const token = localStorage.getItem('token');
+      
+      if (isEditing) {
+        console.log(formData);
+        
+        await axios.post(`http://localhost:8000/api/plants/${id}?_method=PUT`, formData, {
+          headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'
-            }
+          }
+        });
+        alert('Plante mise à jour avec succès');
+      } else {
+        await axios.post('http://localhost:8000/api/plants', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+          }
         });
         alert('Plante créée avec succès');
-        } catch (error) {
-        if (error.response && error.response.data.errors) {
-            setErrors(error.response.data.errors);
-        } else {
-            console.error(error);
-        }
-        }
-    };
+      }
+      navigate('/dashboard');
+    } catch (error) {
+      if (error.response && error.response.data.errors) {
+        setErrors(error.response.data.errors);
+      } else {
+        console.error(error);
+      }
+    }
+  };
 
     return <>
-      <HeroSection title="Création d'une Plante" />
+      <HeroSection title={isEditing ? "Modification d'une plante" : "Création d'une plante"} />
       <div className="lg:w-1/3 sm:w-3/4 md:w-3/4 m-auto my-10">
       <div className="form space-y-3">
         <form onSubmit={handleSubmit} className='space-y-6'>
@@ -89,7 +140,7 @@ function PlantForm (){
                     onChange={handleChange} 
                     placeholder='Nom de la plante'
                     className="input bg-transparent w-full"
-                    required />
+                    />
                 {errors.name && <span>{errors.name}</span>}
             </div>
 
@@ -118,8 +169,7 @@ function PlantForm (){
                     name="description" 
                     value={formData.description} 
                     onChange={handleChange} 
-                    placeholder='Description'
-                    required 
+                    placeholder='Description' 
                     className="input bg-transparent w-full" />
                 {errors.description && <span>{errors.description}</span>}
             </div>
@@ -182,8 +232,7 @@ function PlantForm (){
                     placeholder='Type de sol' 
                     value={formData.soil}
                     className="input bg-transparent w-full" 
-                    onChange={handleChange} 
-                    required />
+                    onChange={handleChange} />
                 {errors.soil && <span>{errors.soil}</span>}
             </div>
 
@@ -194,8 +243,7 @@ function PlantForm (){
                     placeholder='Arrosage'
                     className="input bg-transparent w-full"
                     value={formData.watering} 
-                    onChange={handleChange} 
-                    required />
+                    onChange={handleChange} />
                 {errors.watering && <span>{errors.watering}</span>}
             </div>
 
@@ -206,8 +254,7 @@ function PlantForm (){
                     placeholder='Exposition'
                     className="input bg-transparent w-full"
                     value={formData.exposure} 
-                    onChange={handleChange} 
-                    required />
+                    onChange={handleChange} />
                 {errors.exposure && <span>{errors.exposure}</span>}
             </div>
 
@@ -218,12 +265,11 @@ function PlantForm (){
                     placeholder='Entretien'
                     className="input bg-transparent w-full"
                     value={formData.maintenance} 
-                    onChange={handleChange} 
-                    required />
+                    onChange={handleChange} />
                 {errors.maintenance && <span>{errors.maintenance}</span>}
             </div>
 
-            <button type="submit" className='btn uppercase'>Créer</button>
+            <button type="submit" className='btn uppercase'>{isEditing ? 'Mettre à jour' : 'Créer'}</button>
         </form>
       </div>
       </div>

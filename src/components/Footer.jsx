@@ -46,8 +46,8 @@ function Footer ({ isAuthenticated, isAdmin, onLogout }) {
                     />
                 </Link>
                 <ul className="menu menu-horizontal mb-3 sm:mb-0">
-                    {!isAuthenticated && navLinks.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
-                    {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}   
+                    {!isAuthenticated && navLinks.map( (navLink) => <li key={navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
+                    {isAuthenticated && navLinksConnected.map( (navLink) => <li key={navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}   
                     {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}                 
                 </ul>
                 <ul className="menu menu-horizontal mb-3 sm:mb-0">

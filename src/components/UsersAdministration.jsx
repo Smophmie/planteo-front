@@ -13,7 +13,6 @@ function UsersAdministration(){
         })
         .then(response => {
         const data = response.data;
-        console.log(data);
         if (data.length != 0){
             setUsers(data);
         } 
@@ -79,7 +78,7 @@ function UsersAdministration(){
                 </td>
                 <td className="py-2 px-4 border-b">
                   <button onClick={() => deleteUser(user.id)}>
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </button>
                 </td>
               </tr>

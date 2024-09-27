@@ -15,7 +15,6 @@ function PlantsAdministration(){
         })
         .then(response => {
         const data = response.data;
-        console.log(data);
         if (data.length != 0){
             setPlants(data);
         } 
@@ -44,9 +43,9 @@ function PlantsAdministration(){
             {plants.map((plant) => (
               <li key={plant.id} className="space-x-3 flex py-2 px-4 border-b w-min">
                 <Link to={`/plant/${plant.id}`} className="w-64 text-center">{plant.name}</Link>
-                <Link to={`/edit-plant/${plant.id}`} className="w-9"><i class="fa-solid fa-pen"></i></Link>
+                <Link to={`/edit-plant/${plant.id}`} className="w-9"><i className="fa-solid fa-pen"></i></Link>
                 <button onClick={() => deletePlant(plant.id)} className="w-9">
-                    <i class="fa-solid fa-trash-can"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                 </button>
               </li>
               

@@ -2,11 +2,11 @@ import HeroSection from "../components/HeroSection";
 import UsersAdministration from "../components/UsersAdministration";
 import PlantsAdministration from "../components/PlantsAdministration";
 
-function Dashboard ({isAdmin}){
+function Dashboard (){
     return <>
-        {isAdmin && <HeroSection title="Tableau de bord"/>}
-        {isAdmin && <UsersAdministration/>}
-        {isAdmin && <PlantsAdministration/>}
+       <HeroSection title="Tableau de bord"/>
+       <UsersAdministration/>
+       <PlantsAdministration/>
     </>
 }
 

@@ -29,7 +29,6 @@ function App() {
       })
       .then(response => {
         setIsAdmin(response.data);
-        console.log(response.data);
       })
       .catch(error => {
         console.error("There was an error!", error);

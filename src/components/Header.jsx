@@ -64,13 +64,12 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                         tabIndex="0"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
-                        {!isAuthenticated && navLinks.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
-                        {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
+                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
+                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
                         {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
 
 
 
-                        {/* {isAuthenticated && isAdmin && <li><Link to="/all-users" className="">Tous les utilisateurs</Link></li>} */}
                         {isAuthenticated && (
                             <li>
                             <button onClick={handleLogout} className="">
@@ -92,8 +91,8 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                     </div>
                     <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        {!isAuthenticated && navLinks.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
-                        {isAuthenticated && navLinksConnected.map( navLink => <li><a href={navLink.href} key = {navLink.name}>{navLink.name}</a></li>)}
+                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
+                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
                         {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
                     </ul>
                     </div>
