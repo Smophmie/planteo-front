@@ -175,53 +175,60 @@ function PlantForm (){
             </div>
 
             <div className='space-y-2'>
-          <label className="">Périodes de semis:</label>
-          {months.map(month => (
-            <div key={month.value} className='space-x-3'>
-              <input
-                type="checkbox"
-                name="sowing_period"
-                value={month.value}
-                checked={formData.sowing_period.includes(month.value)}
-                onChange={(e) => handleCheckboxChange(e, 'sowing_period')}
-              />
-              <span>{month.name}</span>
+              <label className="font-bold">Périodes de semis:</label>
+              <div className='grid grid-cols-2 gap-4'>
+                {months.map(month => (
+                  <div key={month.value} className='space-x-3'>
+                    <input
+                      type="checkbox"
+                      name="sowing_period"
+                      value={month.value}
+                      checked={formData.sowing_period.includes(month.value)}
+                      onChange={(e) => handleCheckboxChange(e, 'sowing_period')}
+                    />
+                    <span>{month.name}</span>
+                  </div>
+                ))}
+              </div>
+              {errors.sowing_period && <span>{errors.sowing_period}</span>}
             </div>
-          ))}
-          {errors.sowing_period && <span>{errors.sowing_period}</span>}
-        </div>
 
         <div className='space-y-2'>
-          <label className="">Périodes de plantation:</label>
-          {months.map(month => (
-            <div key={month.value} className='space-x-3'>
-              <input
-                type="checkbox"
-                name="planting_period"
-                value={month.value}
-                checked={formData.planting_period.includes(month.value)}
-                onChange={(e) => handleCheckboxChange(e, 'planting_period')}
-              />
-              <span>{month.name}</span>
-            </div>
-          ))}
+          <label className="font-bold">Périodes de plantation:</label>
+          <div className='grid grid-cols-2 gap-4'>
+            {months.map(month => (
+              <div key={month.value} className='space-x-3'>
+                <input
+                  type="checkbox"
+                  className=''
+                  name="planting_period"
+                  value={month.value}
+                  checked={formData.planting_period.includes(month.value)}
+                  onChange={(e) => handleCheckboxChange(e, 'planting_period')}
+                />
+                <span>{month.name}</span>
+              </div>
+            ))}
+          </div>
           {errors.planting_period && <span>{errors.planting_period}</span>}
         </div>
 
         <div className='space-y-2'>
-          <label className="">Périodes de récolte:</label>
-          {months.map(month => (
-            <div key={month.value} className='space-x-3'>
-              <input
-                type="checkbox"
-                name="harvest_period"
-                value={month.value}
-                checked={formData.harvest_period.includes(month.value)}
-                onChange={(e) => handleCheckboxChange(e, 'harvest_period')}
-              />
-              <span>{month.name}</span>
-            </div>
-          ))}
+          <label className="font-bold">Périodes de récolte:</label>
+          <div className='grid grid-cols-2 gap-4'>
+            {months.map(month => (
+              <div key={month.value} className='space-x-3'>
+                <input
+                  type="checkbox"
+                  name="harvest_period"
+                  value={month.value}
+                  checked={formData.harvest_period.includes(month.value)}
+                  onChange={(e) => handleCheckboxChange(e, 'harvest_period')}
+                />
+                <span>{month.name}</span>
+              </div>
+            ))}
+          </div>
           {errors.harvest_period && <span>{errors.harvest_period}</span>}
         </div>
 

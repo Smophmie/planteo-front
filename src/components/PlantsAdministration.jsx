@@ -48,7 +48,6 @@ function PlantsAdministration(){
                     <i className="fa-solid fa-trash-can"></i>
                 </button>
               </li>
-              
             ))}
         </ul>}
       </div>
