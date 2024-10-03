@@ -29,9 +29,11 @@ function Legals (){
 
         Je suis joignable : 
 
-        Par téléphone : +33648437627
-        Par email : sophiethereau@hotmail.fr
-        Par courrier : 119 rue du Fangheat 63160 Egliseneuve-près-Billom
+        <ul>
+            <li>Par téléphone : +33648437627</li>
+            <li>Par email : <a href="mailto:sophiethereau@hotmail.fr">sophiethereau@hotmail.fr</a></li>
+            <li>Par courrier : 119 rue du Fangheat, 63160 Egliseneuve-près-Billom</li>
+    </ul>
         </p>    
 
         <h2 className='text-3xl'>Données personnelles</h2>

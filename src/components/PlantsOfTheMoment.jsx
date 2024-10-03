@@ -15,7 +15,7 @@ function PlantsOfTheMoment() {
         setMonth(month);
 
         const fetchPlants = (periodType, setPlants) => {
-            axios.get(`http://127.0.0.1:8000/api/plantsbyperiod/${month}/${periodType}`)
+            axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}plantsbyperiod/${month}/${periodType}`)
                 .then(response => {
                     setPlants(response.data);
                 })

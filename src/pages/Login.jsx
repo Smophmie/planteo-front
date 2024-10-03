@@ -13,7 +13,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/login', { email, password });
+      const response = await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}login`, { email, password });
       localStorage.setItem('token', response.data.token);
       onLogin();
       navigate('/');

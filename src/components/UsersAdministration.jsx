@@ -6,7 +6,7 @@ function UsersAdministration(){
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        axios.get("http://localhost:8000/api/users", {
+        axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}users`, {
           headers: {
               Authorization: `Bearer ${token}`
           }
@@ -21,7 +21,7 @@ function UsersAdministration(){
 
     const deleteUser = (userId) => {
         const token = localStorage.getItem('token');
-        axios.delete(`http://localhost:8000/api/users/${userId}`, {
+        axios.delete(`${import.meta.env.VITE_BACK_URL_LARAVEL}users/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -39,7 +39,7 @@ function UsersAdministration(){
         setUsers(users.map(user => 
             user.id === userId ? { ...user, is_admin: !isAdmin } : user
         ));
-        axios.put(`http://localhost:8000/api/users/${userId}/toggle-admin`, {
+        axios.put(`${import.meta.env.VITE_BACK_URL_LARAVEL}users/${userId}/toggle-admin`, {
           is_admin: !isAdmin
         }, {
           headers: {

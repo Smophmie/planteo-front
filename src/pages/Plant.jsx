@@ -16,11 +16,11 @@ function Plant({isAuthenticated}) {
     useEffect(() => {
         const fetchPlant = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/plants/${id}`);
+                const response = await axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants/${id}`);
                 setPlant(response.data);
 
                 if(isAuthenticated){
-                    const favoriteResponse = await axios.get(`http://localhost:8000/api/favorite/${id}`, {
+                    const favoriteResponse = await axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}favorite/${id}`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
@@ -40,7 +40,7 @@ function Plant({isAuthenticated}) {
     const handleFavoriteToggle = async () => {
         try {
             if (isFavorite) {
-                await axios.delete(`http://localhost:8000/api/favorites`, { 
+                await axios.delete(`${import.meta.env.VITE_BACK_URL_LARAVEL}favorites`, { 
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
@@ -48,7 +48,7 @@ function Plant({isAuthenticated}) {
                 });
                 setIsFavorite(false);
             } else {
-                await axios.post(`http://localhost:8000/api/favorites`, { plant_id: id }, {
+                await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}favorites`, { plant_id: id }, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

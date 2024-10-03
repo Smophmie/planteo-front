@@ -10,7 +10,7 @@ function Weather() {
     const getCityInformations = async () => {
         try {
             const token = localStorage.getItem('token');
-            const user = await axios.get('http://127.0.0.1:8000/api/connectedUser', {
+            const user = await axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}connectedUser`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

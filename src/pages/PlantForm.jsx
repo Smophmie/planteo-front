@@ -42,7 +42,7 @@ function PlantForm (){
   useEffect(() => {
     if (isEditing) {
       const token = localStorage.getItem('token');
-      axios.get(`http://localhost:8000/api/plants/${id}`, {
+      axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -101,7 +101,7 @@ function PlantForm (){
       if (isEditing) {
         console.log(formData);
         
-        await axios.post(`http://localhost:8000/api/plants/${id}?_method=PUT`, formData, {
+        await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants/${id}?_method=PUT`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'
@@ -109,7 +109,7 @@ function PlantForm (){
         });
         alert('Plante mise à jour avec succès');
       } else {
-        await axios.post('http://localhost:8000/api/plants', formData, {
+        await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'

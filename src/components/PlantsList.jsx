@@ -14,8 +14,8 @@ function PlantsList() {
 
   const fetchPlants = (search = "") => {
     const url = search 
-        ? `http://127.0.0.1:8000/api/plantsbyname?search=${search}` 
-        : "http://127.0.0.1:8000/api/plants";
+        ? `${import.meta.env.VITE_BACK_URL_LARAVEL}plantsbyname?search=${search}` 
+        : `${import.meta.env.VITE_BACK_URL_LARAVEL}plants`;
 
     fetch(url, { type: "GET" })
         .then((res) => res.json())

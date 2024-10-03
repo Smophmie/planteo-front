@@ -14,7 +14,7 @@ function MyProfile () {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get("http://localhost:8000/api/connectedUser", {
+    axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}connectedUser`, {
       headers: {
           Authorization: `Bearer ${token}`
       }
@@ -39,7 +39,7 @@ function MyProfile () {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    axios.put(`http://localhost:8000/api/users/${userData.id}`, formData, {
+    axios.put(`${import.meta.env.VITE_BACK_URL_LARAVEL}users/${userData.id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }

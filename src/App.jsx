@@ -22,7 +22,7 @@ function App() {
     setIsAuthenticated(!!token);
 
     if (isAuthenticated) {
-      axios.get('http://localhost:8000/api/isadmin', {
+      axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}isadmin`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -24,7 +24,7 @@ const handleLogout = async () => {
             Authorization: `Bearer ${token}`
           }
         };
-        await axios.post('http://localhost:8000/api/logout', {}, config);
+        await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}logout`, {}, config);
         localStorage.removeItem('token');
         onLogout(); 
         navigate('/');

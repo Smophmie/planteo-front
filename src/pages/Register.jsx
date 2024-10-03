@@ -27,7 +27,7 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        axios.post('http://localhost:8000/api/register', formData)
+        axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}register`, formData)
             .then(response => {
                 setMessage('Inscription réussie ! Vous pouvez maintenant vous connecter.');
                 setFormData({

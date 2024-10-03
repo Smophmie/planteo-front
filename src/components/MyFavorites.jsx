@@ -8,7 +8,7 @@ function MyFavorites () {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        axios.get("http://localhost:8000/api/favorites", {
+        axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}favorites`, {
           headers: {
               Authorization: `Bearer ${token}`
           }

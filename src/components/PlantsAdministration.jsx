@@ -8,7 +8,7 @@ function PlantsAdministration(){
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        axios.get("http://localhost:8000/api/plants", {
+        axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants`, {
           headers: {
               Authorization: `Bearer ${token}`
           }
@@ -23,7 +23,7 @@ function PlantsAdministration(){
 
       const deletePlant = (plantId) => {
         const token = localStorage.getItem('token');
-        axios.delete(`http://localhost:8000/api/plants/${plantId}`, {
+        axios.delete(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants/${plantId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
