@@ -41,10 +41,10 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
     return (
         <>
         <header>
-            <div className="navbar navbar-header">
+            <nav className="navbar navbar-header">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <div tabIndex="0" role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex="0" role="button" aria-label="Ouvrir le menu de navigation" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -64,15 +64,15 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                         tabIndex="0"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
-                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
-                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
-                        {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
+                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
+                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
+                        {isAdmin && <li><Link to='/dashboard'>Tableau de bord</Link></li>}
 
 
 
                         {isAuthenticated && (
                             <li>
-                            <button onClick={handleLogout} className="">
+                            <button onClick={handleLogout} aria-label="Se déconnecter" className="">
                                 Me déconnecter
                             </button>
                             </li>
@@ -84,23 +84,23 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                     <Link to="/" className="btn-ghost">
                         <img
                         src="/img/logo-removebg-preview.png"
-                        alt="Logo"
+                        alt="Logo Planteo"
                         className="logo"
                         />
                     </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
-                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><a href={navLink.href} >{navLink.name}</a></li>)}
-                        {isAdmin && <li><a href='/dashboard'>Tableau de bord</a></li>}
+                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
+                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
+                        {isAdmin && <li><Link to='/dashboard'>Tableau de bord</Link></li>}
                     </ul>
                     </div>
                     <div className="navbar-end hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             {isAuthenticated && (
                             <li>
-                                <button onClick={handleLogout} className="">
+                                <button onClick={handleLogout} aria-label="Se déconnecter" className="">
                                 Me déconnecter
                                 </button>
                             </li>
@@ -109,7 +109,7 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                             {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
                         </ul>
                     </div>
-                </div>
+                </nav>
             </header>
         </>
     )

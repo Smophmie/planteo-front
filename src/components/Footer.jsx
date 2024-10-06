@@ -41,7 +41,7 @@ function Footer ({ isAuthenticated, isAdmin, onLogout }) {
                 <Link to="/" className="">
                     <img
                     src="/img/logo-removebg-preview.png"
-                    alt="Logo"
+                    alt="Logo Planteo"
                     className="logo"
                     />
                 </Link>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import HeroSection from "../components/HeroSection";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/plant.css"

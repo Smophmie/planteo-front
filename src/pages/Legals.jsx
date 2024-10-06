@@ -11,7 +11,7 @@ function Legals (){
         <h2 className='text-3xl'>Edition du site </h2>
 
         <p className="my-3">
-            Le présent site, accessible à l’URL planteo.atwebpages.com, est édité par : <br></br>
+            Le présent site, accessible à l’URL https://planteo-site.netlify.app/, est édité par : <br></br>
 
             Sophie Théréau, résidant 119 rue du Fangheat 63160 Egliseneuve-près-Billom, de nationalité Française (France), né(e) le 30/12/1995.
         </p> 
@@ -19,7 +19,9 @@ function Legals (){
         <h2 className='text-3xl'>Hébergement</h2>
 
         <p className="my-3">
-            Le Site est hébergé par la société Awardspace, situé Zetta Hosting Solutions LTD. Bulgaria, 9000 Varna, Belogradchik Street 8, (contact téléphonique ou email : +35929751696).
+
+            Le site est hébergé par Netlify, situé au 2325 3rd Street, Suite 215, San Francisco, CA 94107, États-Unis. Vous pouvez les contacter par téléphone au +1-844-899-7312 ou par email à support@netlify.com.
+
         </p>
             
         <h2 className='text-3xl'>Directeur de publication</h2>
