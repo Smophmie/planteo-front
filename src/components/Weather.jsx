@@ -10,23 +10,28 @@ function Weather() {
     const getCityInformations = async () => {
         try {
             const token = localStorage.getItem('token');
+            
+            // Get user's city
             const user = await axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}connectedUser`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
-            });            const userCity = user.data.city;
+            });            
+            const userCity = user.data.city;
             setCity(userCity);
 
+            // Get insee 
             const cityInfos = await axios.get(`https://api.meteo-concept.com/api/location/cities?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&search=${userCity}`);
 
             const insee = cityInfos.data.cities[0].insee;
             
+            // Get the city's weather using insee number and set weather
             getWeather(insee)
             .then(forecast => {
                 setWeather(forecast);
             });
         } catch (error) {
-            console.error('Erreur lors de la recherche de la ville', error);
+            console.error('Erreur lors de la recherche de votre météo locale.', error);
         }
     }
 
@@ -48,18 +53,17 @@ function Weather() {
 
     return (
         <>
-        {weather && <div className='sm:m-20 my-14 mx-4 weather'>
-            <h2 className='text-3xl'>Météo du jour</h2>
-            <div className='weather-block sm:m-16 m-6 sm:p-10 p-4 space-y-2 w-auto rounded-lg'>
-                {/* Correspondances entre le nombre entier de weather.weather et la description météo en toutes lettres */}
-                <p className='text-white bold'>Conditions météorologiques : {weatherDescriptions[weather.weather]}</p> 
-                <p className='text-white bold'>Température maximale : {weather.tmax}°C</p>
-                <p className='text-white bold'>Température minimale : {weather.tmin}°C</p>
-                <p className='text-white bold'>Pluie attendue aujourd'hui : {weather.rr10}mm</p>
-                <p className='text-white bold'>Vitesse du vent : {weather.wind10m}km/h</p>
-
-            </div>
-        </div>}
+            {weather && <div className='sm:m-20 my-14 mx-4 weather'>
+                <h2 className='text-3xl'>Météo du jour</h2>
+                <div className='weather-block sm:m-16 m-6 sm:p-10 p-4 space-y-2 w-auto rounded-lg'>
+                    {/* Correspondances entre le nombre entier de weather.weather et la description météo en toutes lettres, voir assets */}
+                    <p className='text-white bold'>Conditions météorologiques : {weatherDescriptions[weather.weather]}</p> 
+                    <p className='text-white bold'>Température maximale : {weather.tmax}°C</p>
+                    <p className='text-white bold'>Température minimale : {weather.tmin}°C</p>
+                    <p className='text-white bold'>Pluie attendue aujourd'hui : {weather.rr10}mm</p>
+                    <p className='text-white bold'>Vitesse du vent : {weather.wind10m}km/h</p>
+                </div>
+            </div>}
         </>
     );
 }

@@ -61,24 +61,31 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
                         </svg>
                         </div>
                         <ul
-                        tabIndex="0"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                            tabIndex="0"
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
-                        {!isAuthenticated && navLinks.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
-                        {isAuthenticated && navLinksConnected.map( navLink => <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>)}
-                        {isAdmin && <li><Link to='/dashboard'>Tableau de bord</Link></li>}
-
-
-
-                        {isAuthenticated && (
-                            <li>
-                            <button onClick={handleLogout} aria-label="Se déconnecter" className="">
-                                Me déconnecter
-                            </button>
-                            </li>
-                        )}
-                        {!isAuthenticated && <li><Link to="/login" className="">Me connecter</Link></li>}
-                        {!isAuthenticated && <li><Link to="/register" className="">Créer un compte</Link></li>}
+                            {!isAuthenticated && navLinks.map( navLink => 
+                                <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>
+                            )}
+                            {isAuthenticated && navLinksConnected.map( navLink => 
+                                <li key = {navLink.name}><Link to={navLink.href} >{navLink.name}</Link></li>
+                            )}
+                            {isAdmin && 
+                                <li><Link to='/dashboard'>Tableau de bord</Link></li>
+                            }
+                            {isAuthenticated && (
+                                <li>
+                                    <button onClick={handleLogout} aria-label="Se déconnecter" className="">
+                                        Me déconnecter
+                                    </button>
+                                </li>
+                            )}
+                            {!isAuthenticated && 
+                                <li><Link to="/login" className="">Me connecter</Link></li>
+                            }
+                            {!isAuthenticated && 
+                                <li><Link to="/register" className="">Créer un compte</Link></li>
+                            }
                         </ul>
                     </div>
                     <Link to="/" className="btn-ghost">
