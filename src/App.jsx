@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import axios from 'axios';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -50,16 +50,15 @@ function App() {
     <Header isAuthenticated={isAuthenticated} isAdmin={isAdmin} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home isAuthenticated={isAuthenticated} />}/>
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/register" element={<Register/>}/>
+        {!isAuthenticated && <Route path="/login" element={<Login onLogin={handleLogin} />} />}
+        {!isAuthenticated && <Route path="/register" element={<Register/>}/>}
         <Route path="/all-plants" element={<Plants/>}/>
         <Route path="/plant/:id" element={<Plant isAuthenticated={isAuthenticated}/>}/>
-        {isAuthenticated && <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated}/>}/>}
+        {isAuthenticated && <Route path="/profile" element={<Profile/>}/>}
         <Route path="/legals" element={<Legals/>}/>
-        {isAdmin && <Route path="/dashboard" element={<Dashboard isAdmin={isAdmin}/>}/>}
+        {isAdmin && <Route path="/dashboard" element={<Dashboard/>}/>}
         {isAdmin && <Route path="/edit-plant/:id" element={<PlantForm/>}/>}
         {isAdmin && <Route path="/create-plant" element={<PlantForm/>}/>}
-
       </Routes>
     <Footer isAuthenticated={isAuthenticated} isAdmin={isAdmin} onLogout={handleLogout}/>
     </BrowserRouter>

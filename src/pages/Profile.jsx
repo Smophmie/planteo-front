@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import MyProfile from "../components/MyProfile";
 import MyFavorites from "../components/MyFavorites";
 
-function Profile({ isAuthenticated }) {
+function Profile() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {

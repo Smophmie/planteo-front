@@ -87,7 +87,7 @@ function Plant({isAuthenticated}) {
                 {plant.image && (
                     <img 
                         src={`http://localhost:8000/storage/${plant.image}`}  
-                        alt="" 
+                        alt={plant.name} 
                         className="w-screen h-60 object-cover shadow-lg"
                     />
                 )}
