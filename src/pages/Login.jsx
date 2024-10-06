@@ -29,21 +29,21 @@ const Login = ({ onLogin }) => {
         <p>Connectez-vous et développez votre potager.</p>
         <form onSubmit={handleSubmit} className='space-y-6'>
           <div className="form-group">
+            <label htmlFor="email">Votre e-mail</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="E-mail"
               required
               className="input bg-transparent w-full"
             />
           </div>
           <div className="form-group">
+            <label htmlFor="password">Votre mot de passe</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Mot de passe"
               required
               className="input bg-transparent w-full"
             />

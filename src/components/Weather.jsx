@@ -5,7 +5,6 @@ import weatherDescriptions from '../assets/weatherDescriptions.json'
 
 function Weather() {
     const [weather, setWeather] = useState(null);
-    const [city, setCity] = useState('');
 
     const getCityInformations = async () => {
         try {
@@ -18,7 +17,6 @@ function Weather() {
                 }
             });            
             const userCity = user.data.city;
-            setCity(userCity);
 
             // Get insee 
             const cityInfos = await axios.get(`https://api.meteo-concept.com/api/location/cities?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&search=${userCity}`);

@@ -57,54 +57,55 @@ const Register = () => {
                 {message && <p style={{ color: 'red' }}>{message}</p>}
                 <form onSubmit={handleSubmit} className='space-y-6'>
                     <div className="form-group">
+                        <label htmlFor="name">Votre nom *</label>
                         <input 
                             type="text" 
-                            name="name" 
-                            placeholder="Votre nom" 
+                            name="name"  
                             value={formData.name} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
                         />
-                        {/* {errors.name && <p style={{ color: 'red' }}>{errors.name[0]}</p>} */}
+                        {errors.name && <p style={{ color: 'red' }}>{errors.name[0]}</p>}
                     </div>
                     <div className="form-group">
+                        <label htmlFor="city">Votre ville *</label>
                         <input 
                             type="text" 
                             name="city" 
-                            placeholder="Votre ville" 
                             value={formData.city} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
                         />
-                        {/* {errors.name && <p style={{ color: 'red' }}>{errors.city[0]}</p>} */}
+                        {errors.name && <p style={{ color: 'red' }}>{errors.city[0]}</p>}
                     </div>
                     <div className="form-group">
+                        <label htmlFor="email">Votre e-mail*</label>
                         <input 
                             type="email" 
                             name="email" 
-                            placeholder="Votre e-mail" 
                             value={formData.email} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
                         />
-                        {/* {errors.email && <p style={{ color: 'red' }}>{errors.email[0]}</p>} */}
+                        {errors.email && <p style={{ color: 'red' }}>{errors.email[0]}</p>}
                     </div>
                     <div className="form-group">
+                        <label htmlFor="password">Votre mot de passe *</label>
+                        <p className='text-xs'>(8 caractères dont des minuscules, des majuscules et un caractère spécial)</p>
                         <input 
                             type="password" 
                             name="password" 
-                            placeholder="Votre mot de passe" 
                             value={formData.password} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"
                         />
-                        {/* {errors.password && <p style={{ color: 'red' }}>{errors.password[0]}</p>} */}
+                        {errors.password && <p style={{ color: 'red' }}>{errors.password[0]}</p>}
                     </div>
                     <div className="form-group">
+                        <label htmlFor="password_confirmation">Confirmez votre mot de passe *</label>
                         <input 
                             type="password" 
                             name="password_confirmation" 
-                            placeholder="Confirmez votre mot de passe" 
                             value={formData.password_confirmation} 
                             onChange={handleChange} 
                             className="input bg-transparent w-full"

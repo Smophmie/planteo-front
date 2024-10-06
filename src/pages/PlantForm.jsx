@@ -38,6 +38,7 @@ function PlantForm (){
   });
     
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     if (isEditing) {
@@ -107,7 +108,7 @@ function PlantForm (){
             'Content-Type': 'multipart/form-data'
           }
         });
-        alert('Plante mise à jour avec succès');
+        setSuccessMessage('Plante mise à jour avec succès');
       } else {
         await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}plants`, formData, {
           headers: {
@@ -115,7 +116,7 @@ function PlantForm (){
             'Content-Type': 'multipart/form-data'
           }
         });
-        alert('Plante créée avec succès');
+        setSuccessMessage('Plante créée avec succès');
       }
       navigate('/dashboard');
     } catch (error) {
@@ -131,6 +132,7 @@ function PlantForm (){
       <HeroSection title={isEditing ? "Modification d'une plante" : "Création d'une plante"} />
       <div className="lg:w-1/3 sm:w-3/4 md:w-3/4 m-auto my-10">
       <div className="form space-y-3">
+        {successMessage && <div className="alert alert-success">{successMessage}</div>}
         <form onSubmit={handleSubmit} className='space-y-6'>
             <div className="form-group">
                 <input 
