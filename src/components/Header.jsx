@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/header.css" ;
 import axios from 'axios';
 
+
 const navLinks = [
     { href: '/', name: "Accueil" },
     { href: '/all-plants', name: "Toutes les plantes" },
@@ -30,6 +31,9 @@ function Header({ isAuthenticated, isAdmin, onLogout }) {
             };
             await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}logout`, {}, config);
             localStorage.removeItem('token');
+            localStorage.removeItem('is_admin');
+            localStorage.removeItem('name');
+            localStorage.removeItem('city');
             onLogout(); 
             navigate('/');
           }

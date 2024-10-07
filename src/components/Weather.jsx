@@ -8,17 +8,9 @@ function Weather() {
 
     const getCityInformations = async () => {
         try {
-            const token = localStorage.getItem('token');
-            
-            // Get user's city
-            const user = await axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}connectedUser`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });            
-            const userCity = user.data.city;
+            const userCity = localStorage.getItem('city');
 
-            // Get insee 
+            // Get insee number
             const cityInfos = await axios.get(`https://api.meteo-concept.com/api/location/cities?token=69abb6b6e44f75d575358ef9a3fe574127ec70091c186f36f716267558b6d182&search=${userCity}`);
 
             const insee = cityInfos.data.cities[0].insee;

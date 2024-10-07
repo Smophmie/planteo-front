@@ -15,6 +15,9 @@ const Login = ({ onLogin }) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}login`, { email, password });
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('is_admin', response.data.is_admin);
+      localStorage.setItem('name', response.data.name);
+      localStorage.setItem('city', response.data.city);
       onLogin();
       navigate('/');
     } catch (err) {

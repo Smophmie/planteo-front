@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import HeroSection from "../components/HeroSection";
 import MyProfile from "../components/MyProfile";
 import MyFavorites from "../components/MyFavorites";
 
 function Profile() {
-  const [userData, setUserData] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const [userCity, setUserCity] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    axios.get(`${import.meta.env.VITE_BACK_URL_LARAVEL}connectedUser`, {
-      headers: {
-          Authorization: `Bearer ${token}`
-      }
-    })
-    .then(response => {
-      const data = response.data;
-      setUserData(data);
-    })
+    setUserName(localStorage.getItem('name'));
+    setUserCity(localStorage.getItem('city'));
+    setDataLoaded(true); 
   }, []);
 
   return (
     <>
-      {userData && <HeroSection title = {userData.name} secondTitle={userData.city}/>}
+      {dataLoaded && (<HeroSection title = {userName} secondTitle={userCity}/>)}
       <MyFavorites/>
       <MyProfile/>
     </>

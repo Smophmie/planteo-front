@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import "../assets/css/footer.css" ;
-import axios from 'axios';
 
 const navLinks = [
     { href: '/', name: "Accueil" },
@@ -14,27 +13,8 @@ const navLinksConnected = [
     { href: '/profile', name: "Mon espace" },
 ]
 
-const handleLogout = async () => {
-    console.log('Déconnexion en cours...');
-    try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        };
-        await axios.post(`${import.meta.env.VITE_BACK_URL_LARAVEL}logout`, {}, config);
-        localStorage.removeItem('token');
-        onLogout(); 
-        navigate('/');
-      }
-    } catch (error) {
-      console.error('Erreur lors de la déconnexion', error);
-    }
-  };
+function Footer ({ isAuthenticated, isAdmin }) {
 
-function Footer ({ isAuthenticated, isAdmin, onLogout }) {
     return <footer className="m-4">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div className="sm:flex sm:items-center sm:justify-between">
