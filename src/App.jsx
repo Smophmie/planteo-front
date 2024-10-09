@@ -11,6 +11,7 @@ import Plant from './pages/Plant';
 import Legals from './pages/Legals';
 import Dashboard from './pages/Dashboard';
 import PlantForm from './pages/PlantForm';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -41,6 +42,7 @@ function App() {
         <Route path="/plant/:id" element={<Plant isAuthenticated={isAuthenticated}/>}/>
         {isAuthenticated && <Route path="/profile" element={<Profile/>}/>}
         <Route path="/legals" element={<Legals/>}/>
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
         {isAdmin && <Route path="/dashboard" element={<Dashboard/>}/>}
         {isAdmin && <Route path="/edit-plant/:id" element={<PlantForm/>}/>}
         {isAdmin && <Route path="/create-plant" element={<PlantForm/>}/>}

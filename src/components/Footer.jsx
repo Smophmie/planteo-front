@@ -32,6 +32,7 @@ function Footer ({ isAuthenticated, isAdmin }) {
                 </ul>
                 <ul className="menu menu-horizontal mb-3 sm:mb-0">
                     <li><a href="/legals" className="">Mentions légales</a></li>
+                    <li><a href="/privacy-policy" className="">Politique de confidentialité</a></li>
                     <li><a href="/" className="">Contact</a></li>
                 </ul>
             </div>
