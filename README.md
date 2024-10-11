@@ -8,7 +8,7 @@ Planteo est une application web qui permet un affichage détaillé d'information
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
-- [Technologies utilisées](#technologies utilisées)
+- [Technologies utilisées](#technologies-utilisées)
 - [Auteure](#auteure)
 
 ## Installation
