@@ -28,18 +28,20 @@ Planteo est une application web qui permet un affichage détaillé d'information
 2. Installez les dépendances
     npm install
 
+3. 
+
 
 ## Usage
 
 Pour démarrer l'application front-end, utilisez la commande suivante :
     npm run dev
 
-Cela lancera l'application en mode développement. Ouvrez http://localhost:3000 pour voir votre application dans le navigateur. La page se rechargera automatiquement si vous modifiez des fichiers.
+Cela lancera l'application en mode développement. Ouvrez http://localhost:5173 pour voir votre application dans le navigateur. La page se rechargera automatiquement si vous modifiez des fichiers.
 
 ## Configuration
 
 Créez un fichier .env à la racine du projet et configurez la route du back-end comme suit :
-VITE_BACKEND_URL=http://localhost:5000
+VITE_BACKEND_URL=http://localhost:8000
 
 ## Technologies utilisées
 

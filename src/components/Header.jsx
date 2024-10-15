@@ -12,6 +12,7 @@ const navLinks = [
 const navLinksConnected = [
     { href: '/', name: "Accueil" },
     { href: '/all-plants', name: "Toutes les plantes" },
+    { href: '/mycalendar', name: "Mon calendrier"},
     { href: '/profile', name: "Mon espace" },
 ]
 

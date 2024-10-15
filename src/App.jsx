@@ -12,6 +12,7 @@ import Legals from './pages/Legals';
 import Dashboard from './pages/Dashboard';
 import PlantForm from './pages/PlantForm';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import MyCalendar from './pages/MyCalendar';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -41,6 +42,7 @@ function App() {
         <Route path="/all-plants" element={<Plants/>}/>
         <Route path="/plant/:id" element={<Plant isAuthenticated={isAuthenticated}/>}/>
         {isAuthenticated && <Route path="/profile" element={<Profile/>}/>}
+        {isAuthenticated && <Route path="/mycalendar" element={<MyCalendar/>}/>}
         <Route path="/legals" element={<Legals/>}/>
         <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
         {isAdmin && <Route path="/dashboard" element={<Dashboard/>}/>}
