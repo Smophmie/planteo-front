@@ -5,17 +5,15 @@ import {
 } from '@schedule-x/calendar'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { useEffect, useState } from 'react'
- 
 import '@schedule-x/theme-default/dist/index.css'
 import { createEventModalPlugin } from '@schedule-x/event-modal'
-import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 import axios from 'axios'
+import '../../assets/css/calendarapp.css'
  
 function CalendarApp() {
   const plugins = [
       createEventsServicePlugin(),
       createEventModalPlugin(),
-      createDragAndDropPlugin(),
     ];
   
   const [events, setEvents] = useState([]);
@@ -37,7 +35,6 @@ function CalendarApp() {
 
   useEffect(() => {
     fetchEvents();
-    console.log(events);
   }, []);
 
   const calendar = useCalendarApp({

@@ -1,6 +1,10 @@
-.sx-react-calendar-wrapper {
-    width: 1200px;
-    max-width: 100vw;
-    height: 800px;
-    max-height: 90vh;
-  }
+.btn-container .btn {
+  background-color: #909E3E;
+  color: white;
+  font-weight: 400;
+}
+
+:root {
+  --sx-color-primary: #f9eb50 !important;
+  --sx-color-primary-container: rgba(249, 235, 80, 0.6) !important;
+}
